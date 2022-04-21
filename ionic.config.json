@@ -1,0 +1,7 @@
+{
+  "name": "Bonafide",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

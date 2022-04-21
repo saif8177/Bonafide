@@ -1,0 +1,95 @@
+<ion-content [fullscreen]="true">
+  <center>
+
+    <!-- <style>
+      @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&display=swap');
+    </style> -->
+  
+
+    <b><p class="text" style="color: black; ">Bonafide Certificate</p></b>
+  </center>
+  
+  <img src="assets/welcom.jpg"/>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-row>
+
+    <ion-fab vertical="top" horizontal="end">
+      <ion-fab-button (click)="signIn()">
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+    <ion-list lines="full">
+      <ion-list-header class="ion-margin">
+        <ion-label>Sign In</ion-label>
+      </ion-list-header>
+      <ion-item-group class="ion-margin-horizontal ion-margin-bottom">
+        <form [formGroup]="form">
+          <div class="ion-margin-vertical">
+            <ion-item>
+              <ion-input 
+                formControlName="username" 
+                placeholder="Username" 
+                type="text"
+                minlength="3">
+              </ion-input>
+            </ion-item>
+            <ion-text *ngIf="!form.get('username').valid && form.get('username').touched">
+              <ion-text class="error" *ngIf="form.get('username').hasError('required')" color="danger">
+                * Please enter the Username
+              </ion-text>
+              <ion-text class="error" *ngIf="form.get('username').hasError('minlength') 
+                && !form.get('username').hasError('required')" color="danger">
+                * Please enter a valid Username
+              </ion-text>
+            </ion-text>
+          </div>
+
+          <div class="ion-margin-vertical">
+            <ion-item>
+              <ion-icon 
+                [name]="type ? 'eye-outline' : 'eye-off-outline'" 
+                slot="end" 
+                color="medium"
+                (click)="changeType()">
+              </ion-icon>
+              <ion-input 
+                formControlName="password" 
+                placeholder="Password" 
+                [type]="type ? 'password' : 'text'">
+              </ion-input>
+            </ion-item>
+            <ion-text *ngIf="!form.get('password').valid && form.get('password').touched">
+              <ion-text class="error" *ngIf="form.get('password').hasError('required')" color="danger">
+                * Please enter the Password
+              </ion-text>
+              <ion-text class="error" *ngIf="form.get('password').hasError('minlength') 
+                && !form.get('password').hasError('required')" color="danger">
+                * Password must of minimum 6 characters long
+              </ion-text>
+            </ion-text>
+          </div>
+
+        </form>
+
+        <ion-item lines="none" class="ion-padding-top">
+          <ion-text style="color: blue;" slot="start" (click)="forgot()">
+            Forgot password?
+          </ion-text>
+        </ion-item>
+
+          <ion-item class="singup" lines="none" >
+            <ion-text style="color: blue;" slot="start" (click)="newaccount()">
+              Don't have account!signup now
+            </ion-text>
+          </ion-item>
+       
+        
+
+      </ion-item-group>
+    </ion-list>
+  </ion-row>
+
+</ion-footer>
